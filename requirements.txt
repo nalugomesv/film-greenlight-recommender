@@ -1,0 +1,19 @@
+-e .
+
+# core DS
+pandas==2.3.2
+numpy==2.3.2
+scikit-learn==1.7.1
+pyarrow==21.0.0
+matplotlib==3.10.6
+seaborn==0.13.2
+
+# notebook no VS Code
+ipykernel==6.30.1
+
+# qualidade de código / hooks
+black==25.1.0
+flake8==7.3.0
+isort==6.0.1
+pre-commit==4.3.0
+nbqa==1.9.1
