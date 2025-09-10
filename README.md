@@ -1,57 +1,104 @@
-Film Greenlight Recommender
-==============================
+# Film Greenlight Recommender
+*Desafio Cientista de Dados*
 
-Data-science challenge on film data: EDA and basic ML to guide which movie to greenlight, with hypotheses, overview-based insights, and IMDB rating prediction.
+---
 
-Project Organization
-------------
+## Sumário
+- [Objetivo](#objetivo)
+- [Estrutura do Repositório](#estrutura-do-repositório)
+- [Pipeline do Projeto](#pipeline-do-projeto)
+- [Resultados Resumidos](#resultados-resumidos)
+- [Como Executar](#como-executar)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Autores](#autores)
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+---
+
+## Objetivo
+O objetivo é analisar um banco de dados cinematográfico e responder:
+
+1. Qual filme recomendar para uma pessoa desconhecida?  
+2. Quais fatores influenciam no faturamento?  
+3. Quais insights podem ser obtidos a partir do texto de *Overview*?  
+4. Como prever a nota do IMDB?  
+5. Qual seria a nota prevista para *The Shawshank Redemption*?  
+
+Este projeto combina **análise exploratória**, **processamento de linguagem natural** e **machine learning** para responder às perguntas de negócio propostas no desafio.
+
+---
+
+## Estrutura do Repositório
+
+film-greenlight-recommender
+├── data/
+│   └── raw/                 # Dados brutos (imdb.csv)
+├── models/                  # Artefatos treinados e pré-processadores (.pkl)
+├── notebooks/               # Jupyter Notebooks (EDA, NLP, Preprocess, Modelagem)
+│   ├── 01_eda.ipynb
+│   ├── 02_overview.ipynb
+│   ├── 03_preprocessing.ipynb
+│   └── 04_modeling.ipynb
+├── reports/                 # Relatórios finais (PDF/CSV) e figuras
+│   ├── figures/
+│   ├── model_selection.csv
+│   └── cv_scores.csv
+├── requirements.txt         # Dependências
+└── README.md
 
 
---------
+---
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## Pipeline do Projeto
+1. **Exploração dos Dados (EDA)**  
+   - Panorama das variáveis, correlações, outliers e hipóteses iniciais.  
+
+2. **Análise de Texto (Overview)**  
+   - Insights de linguagem e classificação de gênero a partir do texto.  
+
+3. **Pré-processamento**  
+   - Tratamento de valores faltantes, encoding de categóricas, scaling de numéricas e vetorização de texto.  
+
+4. **Modelagem**  
+   - Modelos de regressão para prever `IMDB_Rating`.  
+   - Métricas comparadas: **MAE** e **RMSE**.  
+   - Modelo final salvo como `.pkl`.  
+
+5. **Resultados**  
+   - Respostas às perguntas do desafio + insights adicionais.  
+
+---
+
+## Resultados Resumidos
+- Recomendação baseline: filmes com ranking ponderado IMDb (nota + nº votos).  
+- Fatores de faturamento: gênero (Action, Adventure, Sci-Fi ↑), popularidade (`No_of_Votes`), década de lançamento.  
+- Overview: textos permitem classificar gênero com acurácia razoável via TF-IDF + Logistic Regression.  
+- Melhor modelo para IMDB_Rating: GradientBoostingRegressor (MAE ≈ 0.15, RMSE ≈ 0.19).  
+- Previsão para Shawshank Redemption: ~8.80 (coerente com a realidade).  
+
+---
+
+## Como Executar
+### 1. Clone o repositório
+```bash
+git clone https://github.com/nalugomesv/film-greenlight-recommender
+cd film-greenlight-recommender
+```
+
+### 2. Crie um ambiente virtual e ative
+```
+python -m venv .venv
+source .venv/bin/activate   # Linux/Mac
+.venv\Scripts\activate      # Windows
+```
+
+### 3. Instale dependências
+```
+pip install -r requirements.txt
+```
+### 4. Execute os notebooks
+```
+jupyter notebook notebooks/01_eda.ipynb
+```
+## Autora:
+
+Desenvolvido por Ana Luiza Gomes Vieira

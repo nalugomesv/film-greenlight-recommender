@@ -1,14 +1,25 @@
 # venv
 .venv/
+env/
+venv/
 
-# bytecode
+# Bytecode / cache
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
+*.pyi
+*.pyz
+*.pyz.py
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
 
 # C extensions
 *.so
 
-# build/distrib
+# Build / distribuição
 .Python
 build/
 dist/
@@ -16,45 +27,47 @@ develop-eggs/
 downloads/
 eggs/
 .eggs/
+*.egg
+*.egg-info/
+*.dist-info/
+.installed.cfg
+sdist/
+var/
 lib/
 lib64/
 parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# instaladores / logs
+# Instaladores / logs
 pip-log.txt
 pip-delete-this-directory.txt
+*.log
 
-# testes / coverage
+# Testes / coverage
 htmlcov/
 .tox/
 .coverage
 .coverage.*
-.cache
 nosetests.xml
 coverage.xml
 *.cover
-.pytest_cache/
 
-# docs (sphinx)
+# Docs (Sphinx)
 docs/_build/
 
-# dotenv
+# Dotenv
 .env
+.env.*
 
-# IDEs
+# IDEs / projetos locais
 .vscode/
-.idea
+.idea/
 .spyproject/
+*.code-workspace
 
-# notebooks
+# Notebooks
 .ipynb_checkpoints/
 
-# dados 
+# Dados
 data/*
 !data/raw/
 !data/raw/README.md
@@ -63,14 +76,14 @@ data/external/*
 data/interim/*
 data/processed/*
 
-# outputs/experimentos
+# Saídas/experimentos locais
 outputs/
 mlruns/
 
-# OS
+# SO
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# mypy
-.mypy_cache/
+# pyenv / poetry / misc
+.python-version
