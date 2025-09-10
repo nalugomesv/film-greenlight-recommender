@@ -30,22 +30,41 @@ Este projeto combina **análise exploratória**, **processamento de linguagem na
 ## Estrutura do Repositório
 
 film-greenlight-recommender
+
 ├── data/
+
+│   ├── processed/                   # Dados processados
+
 │   └── raw/                         # Dados brutos (imdb.csv)
+
 ├── models/                          # Artefatos treinados e pré-processadores (.pkl)
+
 ├── notebooks/                       # Jupyter Notebooks (EDA, NLP, Preprocess, Modelagem)
+
 │   ├── 01_eda.ipynb
+
 │   ├── 02_overview.ipynb
+
 │   ├── 03_preprocessing.ipynb
+
 │   └── 04_modeling.ipynb
+
 ├── reports/                         # Relatórios (MD/CSV)
+
 │   ├── cv_scores.csv
+
 │   ├── model_selection.csv
+
 │   ├── nlp_per_class_logreg.csv
+
 │   ├── nlp_per_class_svc.csv
+
 │   ├── relatorio_final.md           # Relatório final em Markdown 
+
 │   └── relatorio_final.pdf          # Relatório final em Pdf
+
 ├── requirements.txt                 # Dependências
+
 └── README.md
 
 
